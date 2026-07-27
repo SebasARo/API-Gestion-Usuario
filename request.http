@@ -1,33 +1,36 @@
 
 GET http://localhost:5157/api/User
+Authorization: Bearer my-secret-token
 
 ###
-GET http://localhost:5157/api/User/3
+GET http://localhost:5157/api/User/1
+Authorization: Bearer my-secret-token
 
 ###
 POST http://localhost:5157/api/User
+Authorization: Bearer my-secret-token
 Content-Type: application/json
 
 {
     "id": 3,
     "name": "Carlos",
-    "password": "abc123",
     "age": 33,
     "email": "carlos@gmail.com"
 }
 
 ###
 PUT http://localhost:5157/api/User/3
+Authorization: Bearer my-secret-token
 Content-Type: application/json
 
 {
     "id": 3,
     "name": "Carlos",
-    "password": "abc123",
     "age": 34,
     "email": "carlitos123@gmail.com"
 }
 
 ###
-DELETE http://localhost:5157/api/User/3
+DELETE http://localhost:5157/api/User/1
+Authorization: Bearer my-secret-token
 Content-Type: application/json

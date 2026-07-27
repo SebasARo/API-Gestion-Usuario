@@ -31,3 +31,8 @@ C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\obj\Debug\ne
 C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\obj\Debug\net10.0\UserManagementAPI.pdb
 C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\obj\Debug\net10.0\UserManagementAPI.genruntimeconfig.cache
 C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\obj\Debug\net10.0\ref\UserManagementAPI.dll
+C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\seb14\Documents\CertificadoC#\TrabajosC#\UserManagementAPI\obj\Debug\net10.0\UserManagementAPI.sourcelink.json

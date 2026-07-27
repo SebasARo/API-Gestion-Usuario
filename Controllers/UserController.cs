@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using UserManagementAPI.Services;
 
 namespace UserManagementAPI.Controllers
 {
@@ -9,18 +10,17 @@ namespace UserManagementAPI.Controllers
 //---------------------------- Creamos los usuarios para la API --------------------------------------------------------------------------
     public class UserController : ControllerBase
     {
-        private static List<User> users = new List<User>
-    {
-            new User { Id = 1, Name = "John Doe", Age = 30, Email = "john.doe@example.com" },
-
-            new User { Id = 2, Name = "Sebas Arias", Age = 26, Email = "sebas12@gmail.com" }
-    };
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
+           {
+              _userService = userService;
+           }
 
     //---------------------------------------- GET: api/User --------------------------------------------------------------
     [HttpGet]
     public ActionResult<IEnumerable<User>> GetUsers()
     {
-        return Ok(users);
+        return Ok(_userService.GetUsers());
     }
 
 //---------------------------- Mostrar solo el usuario por id --------------------------------------------------------------------------
@@ -28,7 +28,7 @@ namespace UserManagementAPI.Controllers
     [HttpGet("{id}")]
     public ActionResult<User> GetUser(int id)
     {
-        var user = users.FirstOrDefault(u => u.Id == id);
+        var user = _userService.GetUser(id);
 
         if (user == null)
         {
@@ -49,13 +49,17 @@ public ActionResult<User> CreateUser(User user)
             return BadRequest(ModelState);
         }
 
-        users.Add(user);
+       var createdUser = _userService.CreateUser(user);
+       if (createdUser == null)
+        {
+            return Conflict($"Ya existe un usuario con el Id {user.Id}.");
+        }
 
         return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
     }
     catch (Exception)
     {
-        return StatusCode(500, "An unexpected error occurred.");
+        return StatusCode(500, "Ocurrió un error inesperado.");
     }
 }
 
@@ -71,22 +75,18 @@ public IActionResult UpdateUser(int id, User updatedUser)
             return BadRequest(ModelState);
         }
 
-        var user = users.FirstOrDefault(u => u.Id == id);
+        var update = _userService.UpdateUser(id, updatedUser);
 
-        if (user == null)
+        if (!update)
         {
             return NotFound();
         }
 
-        user.Name = updatedUser.Name;
-        user.Age = updatedUser.Age;
-        user.Email = updatedUser.Email;
-
-        return Ok(user);
+        return Ok(updatedUser);
     }
     catch (Exception)
     {
-        return StatusCode(500, "An unexpected error occurred.");
+        return StatusCode(500, "Ocurrió un error inesperado.");
     }
 }
 
@@ -95,16 +95,14 @@ public IActionResult UpdateUser(int id, User updatedUser)
         [HttpDelete("{id}")]
          public IActionResult DeleteUser(int id)
     {
-        var user = users.FirstOrDefault(u => u.Id == id);
+        var delete = _userService.DeleteUser(id);
 
-        if (user == null)
+        if (!delete)
         {
             return NotFound();
         }
 
-        users.Remove(user);
-        return Ok($"User with ID: {id} and Name: {user.Name} has been deleted.");
-        
+        return Ok($"El Usuario con ID: {id} ha sido eliminado.");
     }
     }
 }
