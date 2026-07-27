@@ -1,0 +1,33 @@
+
+GET http://localhost:5157/api/User
+
+###
+GET http://localhost:5157/api/User/3
+
+###
+POST http://localhost:5157/api/User
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Carlos",
+    "password": "abc123",
+    "age": 33,
+    "email": "carlos@gmail.com"
+}
+
+###
+PUT http://localhost:5157/api/User/3
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Carlos",
+    "password": "abc123",
+    "age": 34,
+    "email": "carlitos123@gmail.com"
+}
+
+###
+DELETE http://localhost:5157/api/User/3
+Content-Type: application/json
