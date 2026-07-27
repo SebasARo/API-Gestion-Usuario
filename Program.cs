@@ -29,8 +29,8 @@ var app = builder.Build();
 
 //middleware
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 app.UseHttpLogging();
 
 if (!app.Environment.IsDevelopment())

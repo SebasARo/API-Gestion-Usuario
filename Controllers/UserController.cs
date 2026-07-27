@@ -11,9 +11,9 @@ namespace UserManagementAPI.Controllers
     {
         private static List<User> users = new List<User>
     {
-            new User { Id = 1, Name = "John Doe", Password = "password123", Age = 30, Email = "john.doe@example.com" },
+            new User { Id = 1, Name = "John Doe", Age = 30, Email = "john.doe@example.com" },
 
-            new User { Id = 2, Name = "Sebas Arias", Password = "securepass456", Age = 26, Email = "sebas12@gmail.com" }
+            new User { Id = 2, Name = "Sebas Arias", Age = 26, Email = "sebas12@gmail.com" }
     };
 
     //---------------------------------------- GET: api/User --------------------------------------------------------------
@@ -79,7 +79,6 @@ public IActionResult UpdateUser(int id, User updatedUser)
         }
 
         user.Name = updatedUser.Name;
-        user.Password = updatedUser.Password;
         user.Age = updatedUser.Age;
         user.Email = updatedUser.Email;
 
